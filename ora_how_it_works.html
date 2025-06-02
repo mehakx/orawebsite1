@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - Ora</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #2d3748;
+        }
+
+        .logo-container {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.1; }
+        }
+
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .page-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ffd89b, #19547b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Overview Grid */
+        .overview-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .overview-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overview-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .overview-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .overview-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .overview-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .overview-card p {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        /* Feature Details */
+        .feature-detail {
+            padding: 80px 0;
+        }
+
+        .feature-detail.alt {
+            background: #f7fafc;
+        }
+
+        .feature-detail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .feature-detail.alt .feature-detail-content {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .feature-detail h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #2d3748;
+            line-height: 1.2;
+        }
+
+        .feature-detail p {
+            font-size: 1.125rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .feature-list {
+            list-style: none;
+            space-y: 1rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(5px);
+        }
+
+        .feature-list i {
+            color: #667eea;
+            font-size: 1.25rem;
+            margin-top: 2px;
+        }
+
+        .feature-list span {
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .feature-image-placeholder {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-image-placeholder.purple {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .feature-image-placeholder.cyan {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .feature-image-placeholder.pink {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .feature-image-placeholder.amber {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        }
+
+        .feature-image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        /* Privacy Section */
+        .privacy-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .privacy-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .privacy-section > p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        .privacy-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .privacy-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .privacy-feature:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .privacy-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .privacy-feature h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-feature p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .faq-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2d3748;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: #f7fafc;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #edf2f7;
+        }
+
+        .faq-question h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .faq-question i {
+            color: #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer p {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta .btn-primary {
+            background: white;
+            color: #667eea;
+            font-size: 1.125rem;
+            padding: 1rem 2rem;
+        }
+
+        .cta .btn-primary:hover {
+            background: #f7fafc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .feature-detail-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .feature-detail.alt .feature-detail-content {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-detail.alt .feature-detail-image {
+                order: -1;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .privacy-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="logo">
+                    <div class="logo-container"></div>
+                    <span>ORA</span>
+                </a>
+                <div class="nav-links">
+                    <a href="/use-cases">Use cases</a>
+                    <a href="/how-it-works">How it works</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/podcast">Podcast</a>
+                    <a href="/contact">Contact</a>
+                    <a href="https://ora-owjy.onrender.com" class="btn-primary" target="_blank">Try ORA</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>How <span class="gradient-text">Ora</span> Works</h1>
+            <p>Discover how Ora continuously monitors and supports your mental and physical health without waiting for a direct request.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Overview Section -->
+        <section class="overview-section">
+            <div class="container">
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="overview-number">1</div>
+                        <h3>Data Collection</h3>
+                        <p>Ora proactively gathers data from various sources including wearable devices, smartphone usage patterns, sleep tracking, and optional voice check-ins.</p>
+                    </div>
+                    <div class="overview-card">
+                        <div class="overview-number">2</div>
+                        <h3>Holistic Analysis</h3>
+                        <p>Your data is analyzed to create a comprehensive picture of your mental, emotional, and physical well-being, identifying patterns and potential areas for improvement.</p>
+                    </div>
+                    <div class="overview-card">
+                        <div class="overview-number">3</div>
+                        <h3>Personalized Insights</h3>
+                        <p>Ora evaluates your well-being against your own personalized baselines and goals, not generic benchmarks, to provide truly relevant insights.</p>
+                    </div>
+                    <div class="overview-card">
+                        <div class="overview-number">4</div>
+                        <h3>Timely Interventions</h3>
+                        <p>Based on your current state and historical patterns, Ora delivers micro-nudges and recommendations at exactly the right moment to be most effective.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Collection Detail -->
+        <section class="feature-detail">
+            <div class="container">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-text">
+                        <h2>Proactive <span class="gradient-text">Data Collection</span></h2>
+                        <p>Unlike traditional wellness apps that require constant manual input, Ora works silently in the background, gathering data from multiple sources to build a comprehensive picture of your well-being.</p>
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Integrates with wearable devices to track physical activity, heart rate, and sleep patterns</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Analyzes smartphone usage patterns to detect potential stress indicators</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Optional voice check-ins with emotion detection technology</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Environmental factors like weather, air quality, and seasonal changes</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="feature-detail-image">
+                        <div class="feature-image-placeholder purple">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Holistic Analysis Detail -->
+        <section class="feature-detail alt">
+            <div class="container">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-image">
+                        <div class="feature-image-placeholder cyan">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h2>Holistic <span class="gradient-text">Analysis</span></h2>
+                        <p>Ora breaks down your overall well-being into mental, emotional, and physical components, providing a complete picture of your health that goes beyond simple metrics.</p>
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Advanced AI algorithms identify patterns across different data sources</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Emotional state analysis based on communication patterns and voice tone</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Physical wellness tracking including activity, sleep quality, and recovery</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cognitive performance monitoring through subtle indicators</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personalized Insights Detail -->
+        <section class="feature-detail">
+            <div class="container">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-text">
+                        <h2>Personalized <span class="gradient-text">Insights</span></h2>
+                        <p>Ora learns your unique patterns and baselines, ensuring that all insights and recommendations are truly personalized to your specific needs and goals.</p>
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Establishes your personal baselines across all wellness dimensions</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Identifies your optimal states for productivity, creativity, and relaxation</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Recognizes your unique stressors and effective coping mechanisms</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Continuously refines its understanding through feedback and observed results</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="feature-detail-image">
+                        <div class="feature-image-placeholder pink">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timely Interventions Detail -->
+        <section class="feature-detail alt">
+            <div class="container">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-image">
+                        <div class="feature-image-placeholder amber">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h2>Timely <span class="gradient-text">Interventions</span></h2>
+                        <p>Ora delivers micro-nudges and recommendations at precisely the right moment, when they'll be most effective and least intrusive to your daily life.</p>
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Breathing exercises during detected moments of stress</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Hydration and movement reminders based on activity patterns</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sleep preparation nudges timed to your optimal sleep schedule</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Mood-boosting activities when emotional dips are detected</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Section -->
+        <section class="privacy-section">
+            <div class="container">
+                <h2>Your Privacy is <span class="gradient-text">Our Priority</span></h2>
+                <p>Ora is designed with privacy at its core. Your sensitive health data never leaves your device without your explicit permission, and you maintain complete control over what is shared and how it's used.</p>
+                <div class="privacy-features">
+                    <div class="privacy-feature">
+                        <div class="privacy-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>End-to-End Encryption</h3>
+                        <p>All your data is encrypted on your device and remains encrypted during transmission and storage.</p>
+                    </div>
+                    <div class="privacy-feature">
+                        <div class="privacy-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3>User Control</h3>
+                        <p>Granular privacy settings let you decide exactly what data is collected and how it's used.</p>
+                    </div>
+                    <div class="privacy-feature">
+                        <div class="privacy-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>On-Device Processing</h3>
+                        <p>Many analyses happen directly on your device, minimizing data transmission.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How does Ora collect data without being intrusive?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Ora is designed to work silently in the background, integrating with devices and services you already use. It prioritizes passive data collection methods that don't require constant input or attention from you. You always have full control over what data sources Ora can access.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Can Ora really understand my emotions?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Ora uses a combination of behavioral patterns, voice analysis (if enabled), and contextual information to infer emotional states. While it can't read your mind, it becomes increasingly accurate at recognizing your emotional patterns over time as it learns from your feedback and behaviors.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What devices and services does Ora integrate with?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Ora integrates with most popular wearable devices, fitness trackers, sleep monitors, and smartphone health apps. It also connects with calendar services, weather APIs, and other contextual data sources to provide a comprehensive picture of your well-being environment.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How long does it take for Ora to learn my patterns?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Ora begins providing value immediately, but its insights become more personalized and accurate over time. Most users notice significantly improved recommendations after 2-3 weeks of regular use as Ora establishes your baselines and patterns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Experience <span class="gradient-text">Ora</span>?</h2>
+                <p>Begin your journey to better wellness with a personal healthcare companion that truly understands you.</p>
+                <a href="https://ora-owjy.onrender.com" class="btn-primary" target="_blank">Try Ora Free</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const is

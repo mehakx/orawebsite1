@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Use Cases - Ora</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Use Cases - ORA</title>
+    <link rel="stylesheet" href="improved_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -16,18 +16,20 @@
                     <div class="logo-container">
                         <div class="swirling-logo"></div>
                     </div>
-                    <span>Ora</span>
+                    <span>ORA</span>
                 </a>
             </div>
             <div class="nav-links" id="navLinks">
                 <ul>
-                    <li><a href="how-it-works.html">How It Works</a></li>
-                    <li><a href="use-cases.html" class="active">Use Cases</a></li>
+                    <li><a href="use-cases.html" class="active">Use cases</a></li>
+                    <li><a href="how-it-works.html">How it works</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="podcast.html">Podcast</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                   <li><a href="https://ora-owjy.onrender.com" class="active btn-primary" target="_blank">Try Ora</a></li>
                 </ul>
+            </div>
+            <div class="nav-actions">
+                <a href="https://ora-owjy.onrender.com" class="btn-primary" target="_blank">Try ORA</a>
             </div>
             <div class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
@@ -35,222 +37,125 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="page-hero">
+    <!-- Back Navigation -->
+    <section class="back-nav">
         <div class="container">
-            <h1><span class="gradient-text">Use Cases</span> from our collection</h1>
-            <p>Discover how Ora supports real people in their wellness journeys through these detailed case studies.</p>
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i>
+                Back to home
+            </a>
         </div>
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories">
+    <!-- Page Header -->
+    <section class="page-header">
         <div class="container">
-            <div class="categories-list">
-                <a href="#" class="category-button active">All</a>
-                <a href="#" class="category-button">Mental Wellness</a>
-                <a href="#" class="category-button">Physical Health</a>
-                <a href="#" class="category-button">Productivity</a>
-                <a href="#" class="category-button">Sleep</a>
-                <a href="#" class="category-button">Nutrition</a>
+            <h1>Explore wellness scenarios from our collection.</h1>
+            <p>Learn how ORA handles real-world wellness challenges through personalized interventions and proactive care.</p>
+        </div>
+    </section>
+
+    <!-- Use Cases Content -->
+    <section class="content-section">
+        <div class="container">
+            <!-- Category Filters -->
+            <div class="category-filters">
+                <button class="filter-btn active">Featured</button>
+                <button class="filter-btn">Mental Health</button>
+                <button class="filter-btn">Physical Wellness</button>
+                <button class="filter-btn">Emotional Support</button>
+                <button class="filter-btn">Lifestyle</button>
+                <button class="filter-btn">Preventive Care</button>
             </div>
-        </div>
-    </section>
 
-    <!-- Featured Use Cases -->
-    <section class="featured-use-cases">
-        <div class="container">
+            <!-- Use Cases Grid -->
             <div class="use-cases-grid">
-                <div class="use-case-card" id="workplace">
-                    <div class="use-case-icon purple">
-                        <i class="fas fa-smile"></i>
-                    </div>
-                    <h3>Workplace Stress Management</h3>
-                    <p>Ora detects rising stress levels during work hours and provides timely interventions to prevent burnout and maintain productivity.</p>
-                    <div class="use-case-details">
-                        <div class="use-case-detail">
-                            <span class="detail-label">User:</span>
-                            <span class="detail-value">Marketing Executive</span>
-                        </div>
-                        <div class="use-case-detail">
-                            <span class="detail-label">Challenge:</span>
-                            <span class="detail-value">High-stress work environment</span>
-                        </div>
-                        <div class="use-case-detail">
-                            <span class="detail-label">Solution:</span>
-                            <span class="detail-value">Proactive stress detection</span>
-                        </div>
-                    </div>
-                    <a href="#workplace-modal" class="btn-secondary view-case-study">View Full Case Study</a>
-                </div>
-                
-                <div class="use-case-card" id="exercise">
-                    <div class="use-case-icon cyan">
-                        <i class="fas fa-running"></i>
-                    </div>
-                    <h3>Personalized Exercise Adaptation</h3>
-                    <p>Ora creates and continuously adapts exercise recommendations based on your changing physical condition, energy levels, and available time.</p>
-                    <div class="use-case-details">
-                        <div class="use-case-detail">
-                            <span class="detail-label">User:</span>
-                            <span class="detail-value">Fitness Enthusiast</span>
-                        </div>
-                        <div class="use-case-detail">
-                            <span class="detail-label">Challenge:</span>
-                            <span class="detail-value">Overtraining and injuries</span>
-                        </div>
-                        <div class="use-case-detail">
-                            <span class="detail-label">Solution:</span>
-                            <span class="detail-value">Adaptive workout planning</span>
-                        </div>
-                    </div>
-                    <a href="#exercise-modal" class="btn-secondary view-case-study">View Full Case Study</a>
-                </div>
-                
-                <div class="use-case-card" id="music">
-                    <div class="use-case-icon pink">
-                        <i class="fas fa-music"></i>
-                    </div>
-                    <h3>Mood-Triggered Music Therapy</h3>
-                    <p>Ora detects subtle changes in mood and offers personalized music selections designed to either complement or shift your emotional state.</p>
-                    <div class="use-case-details">
-                        <div class="use-case-detail">
-                            <span class="detail-label">User:</span>
-                            <span class="detail-value">Graduate Student</span>
-                        </div>
-                        <div class="use-case-detail">
-                            <span class="detail-label">Challenge:</span>
-                            <span class="detail-value">Anxiety and mood swings</span>
-                        </div>
-                        <div class="use-case-detail">
-                            <span class="detail-label">Solution:</span>
-                            <span class="detail-value">Emotion-responsive music</span>
-                        </div>
-                    </div>
-                    <a href="#music-modal" class="btn-secondary view-case-study">View Full Case Study</a>
-                </div>
-                
                 <div class="use-case-card">
-                    <div class="use-case-icon green">
-                        <i class="fas fa-bed"></i>
-                    </div>
-                    <h3>Sleep Quality Optimization</h3>
-                    <p>Ora analyzes your sleep patterns and environmental factors to provide personalized recommendations for improving sleep quality and duration.</p>
-                    <div class="use-case-details">
-                        <div class="use-case-detail">
-                            <span class="detail-label">User:</span>
-                            <span class="detail-value">Tech Professional</span>
-                        </div>
-                        <div class="use-case-detail">
-                            <span class="detail-label">Challenge:</span>
-                            <span class="detail-value">Inconsistent sleep schedule</span>
-                        </div>
-                        <div class="use-case-detail">
-                            <span class="detail-label">Solution:</span>
-                            <span class="detail-value">Personalized sleep routine</span>
-                        </div>
-                    </div>
-                    <a href="#sleep-modal" class="btn-secondary view-case-study">View Full Case Study</a>
-                </div>
-                
-                <div class="use-case-card">
-                    <div class="use-case-icon amber">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3>Nutrition Habit Formation</h3>
-                    <p>Ora helps you develop sustainable nutrition habits by providing timely reminders and suggestions based on your personal preferences and goals.</p>
-                    <div class="use-case-details">
-                        <div class="use-case-detail">
-                            <span class="detail-label">User:</span>
-                            <span class="detail-value">Busy Parent</span>
-                        </div>
-                        <div class="use-case-detail">
-                            <span class="detail-label">Challenge:</span>
-                            <span class="detail-value">Inconsistent eating patterns</span>
-                        </div>
-                        <div class="use-case-detail">
-                            <span class="detail-label">Solution:</span>
-                            <span class="detail-value">Contextual meal planning</span>
-                        </div>
-                    </div>
-                    <a href="#nutrition-modal" class="btn-secondary view-case-study">View Full Case Study</a>
-                </div>
-                
-                <div class="use-case-card">
-                    <div class="use-case-icon blue">
+                    <div class="use-case-icon">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Focus Enhancement</h3>
-                    <p>Ora identifies your optimal focus periods and helps you structure your day to maximize productivity while preventing mental fatigue.</p>
-                    <div class="use-case-details">
-                        <div class="use-case-detail">
-                            <span class="detail-label">User:</span>
-                            <span class="detail-value">Creative Professional</span>
-                        </div>
-                        <div class="use-case-detail">
-                            <span class="detail-label">Challenge:</span>
-                            <span class="detail-value">Distraction and procrastination</span>
-                        </div>
-                        <div class="use-case-detail">
-                            <span class="detail-label">Solution:</span>
-                            <span class="detail-value">Personalized focus scheduling</span>
-                        </div>
-                    </div>
-                    <a href="#focus-modal" class="btn-secondary view-case-study">View Full Case Study</a>
+                    <h3>Workplace Stress Management</h3>
+                    <p>ORA detects elevated stress patterns during work hours through voice analysis and behavioral cues, providing real-time interventions including guided breathing exercises, micro-breaks, and environment adjustments to maintain optimal productivity and wellbeing.</p>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Results Section -->
-    <section class="results-section">
-        <div class="container">
-            <h2>Measurable <span class="gradient-text">Results</span></h2>
-            <div class="results-grid">
-                <div class="result-card">
-                    <div class="result-number">87%</div>
-                    <p>of users report reduced stress levels after 4 weeks</p>
-                </div>
-                <div class="result-card">
-                    <div class="result-number">92%</div>
-                    <p>experience improved sleep quality within 3 weeks</p>
-                </div>
-                <div class="result-card">
-                    <div class="result-number">78%</div>
-                    <p>report better focus and productivity during work hours</p>
-                </div>
-                <div class="result-card">
-                    <div class="result-number">3.5x</div>
-                    <p>increase in consistent healthy habit formation</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Submit Your Story Section -->
-    <section class="submit-story">
-        <div class="container">
-            <div class="submit-story-content">
-                <div class="submit-story-text">
-                    <h2>Share <span class="gradient-text">Your Story</span></h2>
-                    <p>Have you experienced success with Ora? We'd love to hear about it and potentially feature your story in our use cases collection.</p>
-                    <a href="contact.html" class="btn-primary">Submit Your Story</a>
-                </div>
-                <div class="submit-story-image">
-                    <div class="story-image-placeholder">
-                        <i class="fas fa-quote-right"></i>
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-heart"></i>
                     </div>
+                    <h3>Emotional Regulation Support</h3>
+                    <p>Through continuous voice analysis and behavioral pattern recognition, ORA identifies emotional fluctuations and offers personalized coping strategies, music therapy recommendations, and mindfulness practices tailored to your emotional state.</p>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Sleep Optimization</h3>
+                    <p>ORA monitors sleep patterns, environmental factors, and daily activities to provide personalized recommendations for better sleep hygiene, optimal bedtime routines, and recovery optimization strategies.</p>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Fitness Recovery Monitoring</h3>
+                    <p>By analyzing workout intensity, recovery metrics, and physical indicators, ORA helps prevent overtraining and optimizes your fitness routine with personalized recovery recommendations and injury prevention strategies.</p>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Nutrition and Hydration Tracking</h3>
+                    <p>ORA provides intelligent nutrition guidance based on your activity levels, health goals, and dietary preferences, while ensuring optimal hydration through personalized reminders and intake optimization.</p>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Social Wellness Support</h3>
+                    <p>Understanding the importance of social connections, ORA helps maintain healthy relationships by suggesting social activities, identifying isolation patterns, and encouraging meaningful connections with others.</p>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Preventive Health Monitoring</h3>
+                    <p>ORA continuously monitors health indicators and patterns to identify potential health risks early, providing proactive recommendations and encouraging preventive care measures before issues escalate.</p>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Time Management and Productivity</h3>
+                    <p>By understanding your energy patterns and cognitive load, ORA helps optimize your daily schedule, suggests optimal work-break ratios, and provides productivity enhancement strategies aligned with your natural rhythms.</p>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Mindfulness and Meditation</h3>
+                    <p>ORA guides you through personalized mindfulness practices, meditation sessions, and stress-reduction techniques based on your current emotional state and stress levels, promoting mental clarity and inner peace.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta">
+    <section class="cta-section">
         <div class="container">
-            <h2>Ready to Experience <span class="gradient-text">Ora</span>?</h2>
-            <p>Begin your journey to better wellness with a personal healthcare companion that truly understands you.</p>
-            <a href="try-ora.html" class="btn-primary">Try Ora Free</a>
+            <div class="cta-content">
+                <h2>Ready to experience personalized wellness?</h2>
+                <p>Start your journey with ORA and discover how AI-powered wellness can transform your daily life.</p>
+                <div class="cta-actions">
+                    <a href="https://ora-owjy.onrender.com" class="btn-primary" target="_blank">Try ORA Now</a>
+                    <a href="how-it-works.html" class="btn-secondary">Learn how it works</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -258,56 +163,49 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="index.html">
-                        <div class="logo-container">
-                            <div class="swirling-logo"></div>
-                        </div>
-                        <span>Ora</span>
-                    </a>
-                    <p>Your personal healthcare companion that understands you.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                <div class="footer-main">
+                    <div class="footer-logo">
+                        <a href="index.html">
+                            <div class="logo-container">
+                                <div class="swirling-logo"></div>
+                            </div>
+                            <span>ORA</span>
+                        </a>
+                        <p>Your personal healthcare companion, empowering wellness through AI-driven insights and proactive care.</p>
                     </div>
                 </div>
+
                 <div class="footer-links">
                     <div class="footer-links-column">
                         <h3>Product</h3>
                         <ul>
-                            <li><a href="how-it-works.html">How It Works</a></li>
-                            <li><a href="use-cases.html">Use Cases</a></li>
-                            <li><a href="pricing.html">Pricing</a></li>
-                            <li><a href="integrations.html">Integrations</a></li>
-                            <li><a href="security.html">Security</a></li>
+                            <li><a href="use-cases.html">Use cases</a></li>
+                            <li><a href="how-it-works.html">How it works</a></li>
+                            <li><a href="https://ora-owjy.onrender.com" target="_blank">Try ORA</a></li>
                         </ul>
                     </div>
+
                     <div class="footer-links-column">
                         <h3>Resources</h3>
                         <ul>
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="podcast.html">Podcast</a></li>
-                            <li><a href="documentation.html">Documentation</a></li>
-                            <li><a href="community.html">Community</a></li>
-                            <li><a href="support.html">Support</a></li>
+                            <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </div>
+
                     <div class="footer-links-column">
-                        <h3>Company</h3>
+                        <h3>Legal</h3>
                         <ul>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="careers.html">Careers</a></li>
-                            <li><a href="contact.html">Contact</a></li>
                             <li><a href="privacy.html">Privacy Policy</a></li>
                             <li><a href="terms.html">Terms of Service</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2025 Ora AI. All rights reserved.</p>
-               <li><a href="https://ora-owjy.onrender.com" class="active btn-primary" target="_blank">Try Ora</a></li>
+                <p>&copy; 2025 ORA. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -315,3 +213,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+

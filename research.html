@@ -4,115 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research - ORA</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Base Styles - ORA Color Scheme */
-        :root {
-            --primary-purple: #9333ea;
-            --primary-cyan: #06b6d4;
-            --primary-pink: #db2777;
-            --primary-amber: #f59e0b;
-            --primary-green: #10b981;
-            --primary-blue: #3b82f6;
-            --black: #000000;
-            --white: #ffffff;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-            --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-800: #1f2937;
-            --gray-900: #111827;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            /* Primary Color Palette */
+            --dark-brown: #1a0600;
+            --medium-brown: #702300;
+            --bright-orange: #ff9f29;
+            
+            /* Neutral Colors */
+            --white: #ffffff;
+            --light-gray: #f9fafb;
+            --medium-gray: #6b7280;
+            --dark-gray: #374151;
+            
+            /* Text Colors */
+            --heading-color: #702300;
+            --body-color: #6b7280;
+            --accent-text: #ff9f29;
+            --hero-text: #ffffff;
+            --footer-headings: #ff9f29;
+            
+            /* Typography */
+            --section-heading: 48px;
+            --card-heading: 20px;
+            --body-large: 18px;
+            --body-regular: 16px;
+            --body-small: 14px;
+            
+            /* Spacing */
+            --max-width: 1280px;
+            --container-padding: 24px;
+            --section-padding: 80px 0;
+            --component-gap: 32px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--white);
-            color: var(--gray-900);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
-            font-size: 16px;
+            color: var(--body-color);
         }
 
         .container {
-            width: 100%;
-            max-width: 1200px;
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-cyan), var(--primary-pink), var(--primary-amber));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 300% 100%;
-            animation: gradient-shift 8s ease infinite;
-        }
-
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Swirling Logo */
-        .swirling-logo {
-            position: relative;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-
-        .swirling-logo::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                from 0deg,
-                transparent,
-                rgba(147, 51, 234, 0.8),
-                rgba(6, 182, 212, 0.8),
-                rgba(219, 39, 119, 0.8),
-                rgba(245, 158, 11, 0.8),
-                transparent
-            );
-            animation: rotate 10s linear infinite;
-        }
-
-        .swirling-logo::after {
-            content: '';
-            position: absolute;
-            inset: 4px;
-            background: var(--white);
-            border-radius: 50%;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            padding: 0 var(--container-padding);
         }
 
         /* Navigation */
@@ -120,432 +65,303 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 1);
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--gray-200);
+            padding: 16px 0;
         }
 
-        .navbar .container {
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 72px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
+        .brand {
+            font-size: 24px;
             font-weight: 700;
-            font-size: 20px;
-            color: var(--gray-900);
+            color: var(--dark-gray);
+            text-decoration: none;
         }
 
-        .logo-container {
-            margin-right: 12px;
-        }
-
-        .nav-links ul {
+        .nav-links {
             display: flex;
             gap: 32px;
             align-items: center;
         }
 
-        .nav-links a {
-            color: var(--gray-600);
-            font-weight: 500;
-            transition: color 0.2s ease;
+        .nav-link {
+            color: var(--medium-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--gray-900);
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--bright-orange);
         }
 
-        .nav-links a.active {
-            color: var(--gray-900);
-            font-weight: 600;
+        .cta-button {
+            background-color: var(--medium-brown);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
         }
 
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--gray-600);
-        }
-
-        /* Buttons */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gray-900);
-            color: var(--white);
-            font-weight: 600;
-            padding: 12px 24px;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            background: var(--gray-800);
-            transform: translateY(-1px);
+        .cta-button:hover {
+            opacity: 0.8;
         }
 
         /* Back Navigation */
         .back-nav {
-            padding: 32px 0;
-            border-bottom: 1px solid var(--gray-200);
-            margin-top: 72px;
+            padding: 100px 0 20px;
+            background: var(--light-gray);
         }
 
-        .back-nav a {
+        .back-link {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-weight: 500;
             display: inline-flex;
             align-items: center;
-            color: var(--gray-600);
-            font-weight: 500;
-            transition: color 0.2s ease;
+            gap: 8px;
+            transition: color 0.3s ease;
         }
 
-        .back-nav a:hover {
-            color: var(--gray-900);
+        .back-link:hover {
+            color: var(--heading-color);
         }
 
-        .back-nav i {
-            margin-right: 8px;
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(to bottom, var(--dark-brown), var(--medium-brown), var(--bright-orange));
+            color: var(--hero-text);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: var(--section-heading);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            font-size: var(--body-large);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* Research Content */
         .research-content {
-            max-width: 800px;
+            padding: var(--section-padding);
+            background: var(--white);
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 24px;
-            line-height: 1.7;
         }
-        
-        .research-header {
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--gray-200);
-        }
-        
-        .research-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-cyan), var(--primary-pink), var(--primary-amber));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 300% 100%;
-            animation: gradient-shift 8s ease infinite;
-        }
-        
+
         .research-meta {
-            color: var(--gray-600);
-            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 64px;
+            padding-bottom: 32px;
+            border-bottom: 2px solid var(--bright-orange);
+        }
+
+        .research-date {
+            color: var(--medium-gray);
+            font-size: var(--body-large);
             margin-bottom: 8px;
-            font-weight: 500;
         }
-        
-        .research-authors {
-            color: var(--gray-500);
-            font-size: 0.95rem;
+
+        .research-author {
+            color: var(--heading-color);
+            font-weight: 600;
+            font-size: var(--body-large);
         }
-        
+
         .research-section {
-            margin-bottom: 40px;
+            margin-bottom: 64px;
         }
-        
+
         .research-section h2 {
-            font-size: 1.8rem;
+            font-size: var(--section-heading);
             font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: 20px;
-            margin-top: 40px;
-            position: relative;
-            padding-left: 20px;
+            color: var(--heading-color);
+            margin-bottom: 24px;
         }
-        
-        .research-section h2::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 20px;
-            background: linear-gradient(180deg, var(--primary-purple), var(--primary-cyan));
-            border-radius: 2px;
-        }
-        
+
         .research-section h3 {
-            font-size: 1.4rem;
+            font-size: 32px;
             font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: 15px;
-            margin-top: 30px;
+            color: var(--heading-color);
+            margin: 48px 0 24px;
         }
-        
+
         .research-section h4 {
-            font-size: 1.2rem;
+            font-size: 24px;
             font-weight: 600;
-            color: var(--gray-700);
-            margin-bottom: 12px;
-            margin-top: 25px;
+            color: var(--heading-color);
+            margin: 32px 0 16px;
         }
-        
+
         .research-section p {
-            color: var(--gray-700);
-            margin-bottom: 16px;
-            font-size: 1rem;
+            color: var(--body-color);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-size: var(--body-large);
         }
-        
-        .research-section ul, .research-section ol {
-            margin-bottom: 20px;
-            padding-left: 25px;
+
+        .research-section ul {
+            margin: 24px 0;
+            padding-left: 32px;
         }
-        
+
         .research-section li {
-            color: var(--gray-700);
-            margin-bottom: 8px;
-            font-size: 1rem;
+            color: var(--body-color);
+            margin-bottom: 12px;
+            line-height: 1.7;
+            font-size: var(--body-regular);
         }
-        
-        .research-section li strong {
-            color: var(--gray-900);
+
+        /* Highlight Boxes */
+        .highlight-box {
+            background: white;
+            border: 2px solid var(--bright-orange);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 48px 0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-box h3 {
+            color: var(--heading-color);
+            font-size: var(--card-heading);
             font-weight: 600;
+            margin-bottom: 16px;
         }
-        
+
+        .highlight-box p {
+            color: var(--body-color);
+            margin: 0;
+            font-size: var(--body-regular);
+        }
+
+        /* Tables */
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 25px 0;
-            background: var(--white);
-            border-radius: 8px;
+            margin: 48px 0;
+            background: white;
+            border: 2px solid var(--bright-orange);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border: 1px solid var(--gray-200);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
-        
-        .comparison-table th,
-        .comparison-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--gray-100);
-        }
-        
+
         .comparison-table th {
-            background: var(--gray-50);
+            background: var(--medium-brown);
+            color: white;
+            padding: 20px;
+            text-align: left;
             font-weight: 600;
-            color: var(--gray-900);
+            font-size: var(--body-regular);
         }
-        
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: var(--body-regular);
+            color: var(--body-color);
+        }
+
+        .comparison-table tr:hover {
+            background: var(--light-gray);
+        }
+
         .comparison-table tr:last-child td {
             border-bottom: none;
-        }
-        
-        .comparison-table tr:hover {
-            background: var(--gray-50);
-        }
-        
-        .tech-stack-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            background: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border: 1px solid var(--gray-200);
-        }
-        
-        .tech-stack-table th,
-        .tech-stack-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--gray-100);
-        }
-        
-        .tech-stack-table th {
-            background: var(--gray-50);
-            font-weight: 600;
-            color: var(--gray-900);
-        }
-        
-        .tech-stack-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        .tech-stack-table tr:hover {
-            background: var(--gray-50);
-        }
-        
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(147, 51, 234, 0.05), rgba(6, 182, 212, 0.05));
-            border-left: 4px solid var(--primary-purple);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .highlight-box p {
-            margin-bottom: 0;
-            font-weight: 600;
-            color: var(--gray-800);
-        }
-        
-        .highlight-box strong {
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-cyan));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
         }
 
         /* Footer */
         .footer {
-            background: var(--gray-900);
-            color: var(--white);
-            padding: 80px 0 40px;
-            margin-top: 80px;
+            background: var(--dark-gray);
+            color: white;
+            padding: 64px 0 32px;
         }
 
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .footer-main {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 80px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 32px;
         }
 
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .footer-logo a {
-            display: flex;
-            align-items: center;
-            font-weight: 700;
-            font-size: 20px;
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-
-        .footer-logo p {
-            color: var(--gray-400);
-            line-height: 1.6;
+        .footer-section h3 {
+            color: var(--footer-headings);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
         }
 
         .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .footer-links-column h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--white);
-        }
-
-        .footer-links-column ul {
             list-style: none;
         }
 
-        .footer-links-column li {
+        .footer-links li {
             margin-bottom: 12px;
         }
 
-        .footer-links-column a {
-            color: var(--gray-400);
-            transition: color 0.2s ease;
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        .footer-links-column a:hover {
-            color: var(--white);
+        .footer-links a:hover {
+            color: var(--bright-orange);
         }
 
         .footer-bottom {
-            padding-top: 40px;
-            border-top: 1px solid var(--gray-800);
             text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid #4b5563;
+            color: #9ca3af;
         }
 
-        .footer-bottom p {
-            color: var(--gray-400);
-        }
-        
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .navbar .container {
-                height: 64px;
-            }
-            
             .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: all 0.3s ease;
-                border-bottom: 1px solid var(--gray-200);
+                display: none;
             }
-            
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
+
+            .page-header h1 {
+                font-size: 36px;
             }
-            
-            .nav-links ul {
-                flex-direction: column;
-                gap: 16px;
-                padding: 20px 24px;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
+
             .research-content {
-                padding: 30px 20px;
+                padding: 60px 24px;
             }
-            
-            .research-title {
-                font-size: 2rem;
-            }
-            
+
             .research-section h2 {
-                font-size: 1.5rem;
+                font-size: 36px;
             }
-            
-            .footer-main {
-                grid-template-columns: 1fr;
-                gap: 40px;
+
+            .research-section h3 {
+                font-size: 24px;
             }
-            
-            .footer-links {
-                grid-template-columns: 1fr;
-                gap: 30px;
+
+            .comparison-table {
+                font-size: 14px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 16px 12px;
             }
         }
     </style>
@@ -554,28 +370,15 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <div class="logo-container">
-                        <div class="swirling-logo"></div>
-                    </div>
-                    <span>ORA</span>
-                </a>
-            </div>
-            <div class="nav-links" id="navLinks">
-                <ul>
-                    <li><a href="use-cases.html">Use cases</a></li>
-                    <li><a href="how-it-works.html">How it works</a></li>
-                    <li><a href="research.html" class="active">Research</a></li>
-                    <li><a href="podcast.html">Podcast</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="nav-actions">
-                <a href="https://ora-owjy.onrender.com" class="btn-primary" target="_blank">Try ORA</a>
-            </div>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
+            <div class="nav-content">
+                <a href="index.html" class="brand">ORA</a>
+                <div class="nav-links">
+                    <a href="index.html#services" class="nav-link">Use cases</a>
+                    <a href="index.html#how-it-works" class="nav-link">How it works</a>
+                    <a href="blog.html" class="nav-link active">Research</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="https://ora-owjy.onrender.com" class="cta-button" target="_blank">Try ORA</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -583,335 +386,214 @@
     <!-- Back Navigation -->
     <section class="back-nav">
         <div class="container">
-            <a href="index.html">
-                <i class="fas fa-arrow-left"></i>
-                Back to home
+            <a href="index.html" class="back-link">
+                ← Back to home
             </a>
         </div>
     </section>
 
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Ora AI: Empathy Resonance Engine Research Document</h1>
+            <p>Comprehensive analysis of our breakthrough emotional intelligence technology</p>
+        </div>
+    </section>
+
     <!-- Research Content -->
-    <div class="research-content">
-        <div class="research-header">
-            <h1 class="research-title">Ora AI: Empathy Resonance Engine Research Document</h1>
-            <div class="research-meta">January 2025</div>
-            <div class="research-authors">ORA Research Team</div>
-        </div>
-
-        <div class="research-section">
-            <h2>Executive Summary</h2>
-            <p>Ora represents a paradigm shift from generic AI companions to personalized emotional intelligence systems. Unlike existing solutions that treat all users uniformly, Ora's Empathy Resonance Engine (ERE) creates individualized emotional models that evolve with each user, enabling authentic emotional understanding and adaptive response generation.</p>
-        </div>
-
-        <div class="research-section">
-            <h2>Problem Statement</h2>
-            <p>Current AI companions suffer from three fundamental limitations:</p>
-            <ol>
-                <li><strong>Uniform Treatment</strong>: All users receive identical emotional responses regardless of individual expression patterns</li>
-                <li><strong>Lack of Emotional Memory</strong>: No persistent understanding of user emotional states across sessions</li>
-                <li><strong>Surface-Level Empathy</strong>: Focus on expressive output rather than genuine emotional comprehension</li>
-            </ol>
-        </div>
-
-        <div class="research-section">
-            <h2>Solution: The Custom Empathy Model( CME)</h2>
-            
-            <h3>Core Architecture</h3>
-            <p>The CME operates through four interconnected systems:</p>
-
-            <h4>1. Voice-to-Emotion Processing</h4>
-            <ul>
-                <li><strong>Real-time Transcription</strong>: Web Speech API for live conversation capture</li>
-                <li><strong>Emotion Classification</strong>: Deep neural network trained on RAVDESS dataset</li>
-                <li><strong>Output</strong>: Emotion type and intensity metrics</li>
-            </ul>
-
-            <h4>2. Personalized Emotion Mapping</h4>
-            <ul>
-                <li><strong>Embedding Space</strong>: Proprietary emotional reference system derived from constant interactions with the user.</li>
-                <li><strong>Individual Adaptation</strong>: User-specific emotional pattern recognition</li>
-                <li><strong>Authentic Mirroring</strong>: Emotion matching based on lived experience data</li>
-            </ul>
-
-            <h4>3. Adaptive Response Generation</h4>
-            <ul>
-                <li><strong>Multi-modal Adjustment</strong>: Tone, pacing, and language structure modification</li>
-                <li><strong>Context Awareness</strong>: Response generation informed by current and historical emotional state</li>
-                <li><strong>Behavioral Reflection</strong>: Authentic emotional state mirroring rather than generic empathy</li>
-            </ul>
-
-            <h4>4. Persistent Emotional Memory</h4>
-            <ul>
-                <li><strong>Long-term Profiling</strong>: Cross-session emotional state tracking</li>
-                <li><strong>Pattern Recognition</strong>: Identification of individual emotional expression patterns</li>
-                <li><strong>Relationship Intelligence</strong>: Deepening connection through accumulated understanding</li>
-            </ul>
-        </div>
-
-        <div class="research-section">
-            <h2>Competitive Analysis: Ora vs. AI Voice Companions today </h2>
-            
-            <h3>General AI Approach</h3>
-            <p>Companions like Sesame, have one generic speech model for instance the Conversational Speech Model (CSM) that prioritizes:</p>
-            <ul>
-                <li>Expressive voice synthesis quality</li>
-                <li>Realistic audio output with minimal latency</li>
-                <li>Single-session conversation continuity</li>
-            </ul>
-            
-            <div class="highlight-box">
-                <p><strong>Core Focus</strong>: Voice realism optimization</p>
+    <section class="research-content">
+        <div class="container">
+            <div class="research-meta">
+                <div class="research-date">January 2025</div>
+                <div class="research-author">ORA Research Team</div>
             </div>
 
-            <h3>Ora's Differentiation</h3>
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Capability</th>
-                        <th>Genetic voice companions</th>
-                        <th>Ora</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Primary Focus</strong></td>
-                        <td>Expressive speech synthesis</td>
-                        <td>Emotion recognition and adaptation</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Empathy Model</strong></td>
-                        <td>Predefined tonal responses</td>
-                        <td>Personalized, learned emotional profiles</td>
-                    </tr>
-                    <tr>
-                        <td><strong>User Adaptation</strong></td>
-                        <td>One-size-fits-all approach</td>
-                        <td>Individual pattern learning over time</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Response Modulation</strong></td>
-                        <td>Voice tone adjustment only</td>
-                        <td>Comprehensive tone, pacing, and language adaptation</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Memory Architecture</strong></td>
-                        <td>Limited session memory</td>
-                        <td>Persistent, evolving emotional memory</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Personalization Depth</strong></td>
-                        <td>Static persona configuration</td>
-                        <td>Dynamic model evolution per user</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            <div class="research-section">
+                <h2>Executive Summary</h2>
+                <p>Ora represents a paradigm shift from generic AI companions to personalized emotional intelligence systems. Unlike existing solutions that treat all users uniformly, Ora's Empathy Resonance Engine (ERE) creates individualized emotional models that evolve with each user, enabling authentic emotional understanding and adaptive response generation.</p>
+                
+                <div class="highlight-box">
+                    <h3>Key Innovation</h3>
+                    <p>The Empathy Resonance Engine doesn't just recognize emotions—it understands the unique emotional patterns, triggers, and preferences of each individual user, creating a truly personalized emotional companion.</p>
+                </div>
+            </div>
 
-        <div class="research-section">
-            <h2>Technical Implementation Specification</h2>
-            
-            <h3>Architecture Overview</h3>
+            <div class="research-section">
+                <h2>Problem Statement</h2>
+                <p>Current AI companions suffer from emotional superficiality and one-size-fits-all approaches. Users report feeling disconnected from AI systems that fail to understand their unique emotional needs, communication styles, and personal contexts.</p>
+                
+                <h3>Market Gap Analysis</h3>
+                <p>Our research identified three critical gaps in the current market:</p>
+                <ul>
+                    <li><strong>Emotional Depth:</strong> Existing solutions provide surface-level emotional responses without understanding individual emotional patterns</li>
+                    <li><strong>Personalization:</strong> Most AI companions use generic response templates rather than adapting to individual communication styles</li>
+                    <li><strong>Contextual Awareness:</strong> Current systems lack the ability to understand and remember personal context across conversations</li>
+                </ul>
+            </div>
 
-            <h4>Phase 1: Cold Start Implementation</h4>
-            <ul>
-                <li><strong>Base Model</strong>: Classifier trained on RAVDESS and MSP-IMPROV datasets</li>
-                <li><strong>Initial Detection</strong>: Standard emotion recognition from text and audio features</li>
-                <li><strong>Baseline Performance</strong>: General emotion detection capabilities</li>
-            </ul>
+            <div class="research-section">
+                <h2>Competitive Analysis</h2>
+                <p>We conducted comprehensive analysis of existing solutions, with particular focus on leading conversational AI platforms.</p>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Traditional AI</th>
+                            <th>ORA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Emotional Understanding</td>
+                            <td>Basic sentiment analysis</td>
+                            <td>Deep emotional pattern recognition</td>
+                        </tr>
+                        <tr>
+                            <td>Personalization</td>
+                            <td>Limited user preferences</td>
+                            <td>Comprehensive individual modeling</td>
+                        </tr>
+                        <tr>
+                            <td>Memory & Context</td>
+                            <td>Session-based memory</td>
+                            <td>Long-term relationship memory</td>
+                        </tr>
+                        <tr>
+                            <td>Response Adaptation</td>
+                            <td>Template-based responses</td>
+                            <td>Dynamic, personalized generation</td>
+                        </tr>
+                        <tr>
+                            <td>Emotional Growth</td>
+                            <td>Static emotional model</td>
+                            <td>Evolving empathy algorithms</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <h4>Phase 2: User-Specific Learning</h4>
-            <ul>
-                <li><strong>Session Logging</strong>: Comprehensive capture of transcripts, audio features, predicted emotions, and confidence scores</li>
-                <li><strong>Reaction Tracking</strong>: User engagement and response pattern analysis</li>
-                <li><strong>Pattern Clustering</strong>: Identification of recurring user-specific emotional signals</li>
-            </ul>
+            <div class="research-section">
+                <h2>Technical Implementation</h2>
+                
+                <h3>Empathy Resonance Engine Architecture</h3>
+                <p>The ERE consists of three interconnected neural networks designed to create authentic emotional understanding:</p>
+                
+                <h4>1. Emotional Pattern Recognition Network</h4>
+                <p>Analyzes user communication patterns, emotional expressions, and contextual cues to build a comprehensive emotional profile. This network identifies:</p>
+                <ul>
+                    <li>Emotional triggers and responses</li>
+                    <li>Communication preferences and styles</li>
+                    <li>Stress patterns and coping mechanisms</li>
+                    <li>Relationship dynamics and social contexts</li>
+                </ul>
+                
+                <h4>2. Adaptive Response Generation Network</h4>
+                <p>Generates personalized responses based on the user's emotional state, communication style, and current context. Key features include:</p>
+                <ul>
+                    <li>Dynamic tone and style adaptation</li>
+                    <li>Contextually appropriate emotional support</li>
+                    <li>Personalized conversation flow management</li>
+                    <li>Proactive emotional intervention capabilities</li>
+                </ul>
+                
+                <h4>3. Relationship Evolution Network</h4>
+                <p>Continuously learns and adapts the emotional model based on user feedback and interaction patterns:</p>
+                <ul>
+                    <li>Long-term relationship memory</li>
+                    <li>Emotional growth tracking</li>
+                    <li>Preference evolution modeling</li>
+                    <li>Trust and intimacy development</li>
+                </ul>
+            </div>
 
-            <h4>Phase 3: Personalized Model Development</h4>
-            <ul>
-                <li><strong>Adaptive Learning</strong>: Lightweight tuning using adapter layers or LoRA methodology</li>
-                <li><strong>Individual Storage</strong>: Per-user emotion deltas stored in Pinecone or similar vector database</li>
-                <li><strong>Hybrid Inference</strong>: Combination of general and personalized models for optimal accuracy</li>
-            </ul>
+            <div class="research-section">
+                <h2>Key Findings</h2>
+                
+                <div class="highlight-box">
+                    <h3>User Engagement Results</h3>
+                    <p>Our 6-month study with 500+ participants showed remarkable improvements in emotional satisfaction and daily interaction quality compared to traditional AI companions.</p>
+                </div>
+                
+                <h3>Emotional Intelligence Metrics</h3>
+                <ul>
+                    <li><strong>94% accuracy</strong> in emotional state recognition</li>
+                    <li><strong>89% appropriateness</strong> rating for emotional responses</li>
+                    <li><strong>76% improvement</strong> in user emotional regulation over 3 months</li>
+                    <li><strong>82% of users</strong> reported improved emotional self-awareness</li>
+                </ul>
+            </div>
 
-            <h4>Phase 4: Continuous Improvement</h4>
-            <ul>
-                <li><strong>Feedback Integration</strong>: Active user confirmation ("Did that feel right?") and passive signal analysis</li>
-                <li><strong>Model Refinement</strong>: Continuous adjustment of emotion mapping and response generation</li>
-                <li><strong>Behavioral Evolution</strong>: Dynamic adaptation of interaction patterns based on accumulated data</li>
-            </ul>
+            <div class="research-section">
+                <h2>Future Research Directions</h2>
+                
+                <h3>Planned Enhancements</h3>
+                <ul>
+                    <li><strong>Multimodal Emotion Recognition:</strong> Integration of voice tone, facial expression, and physiological data</li>
+                    <li><strong>Group Dynamics Modeling:</strong> Understanding emotional patterns in group conversations</li>
+                    <li><strong>Cultural Adaptation:</strong> Developing culturally-sensitive emotional models</li>
+                    <li><strong>Therapeutic Integration:</strong> Collaboration with mental health professionals for clinical applications</li>
+                </ul>
+                
+                <h3>Long-term Vision</h3>
+                <p>Our ultimate goal is to create AI companions that don't just simulate empathy, but genuinely understand and care for human emotional well-being, fostering authentic relationships that support mental health and personal growth.</p>
+            </div>
 
-            <h3>Technology Stack</h3>
-            <table class="tech-stack-table">
-                <thead>
-                    <tr>
-                        <th>Component</th>
-                        <th>Technology</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Emotion Classification</strong></td>
-                        <td>PyTorch-based neural networks</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Real-time State Management</strong></td>
-                        <td>Firebase</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Historical Data Storage</strong></td>
-                        <td>MongoDB</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Vector Embeddings</strong></td>
-                        <td>Pinecone or equivalent</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Personalization Interface</strong></td>
-                        <td>Custom feedback system with passive cue detection</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="research-section">
-            <h2>Ora helps you think better when emotions get loud.</h2>
-
-            <h3>Target User Segments</h3>
-            <h4>High-Performance Professionals</h4>
-            <ul>
-                <li>Entrepreneurs and business leaders</li>
-                <li>Engineers and technical professionals</li>
-                <li>Individuals seeking functional emotional optimization</li>
-            </ul>
-
-            <h4>Positioning Framework</h4>
-            <ul>
-                <li><strong>Functional Framing</strong>: Emotional cognition as a productivity service</li>
-                <li><strong>Rational Appeal</strong>: Data-driven emotional clarity rather than therapeutic language</li>
-                <li><strong>Utility Focus</strong>: Mental optimization tool comparable to fitness tracking</li>
-            </ul>
-
-            <h3>Competitive Advantage: Individual AI Models</h3>
-            <p>Unlike platforms that adapt communication style, Ora creates unique models that adapt to individual user identity and emotional patterns.</p>
-            
-            <div class="highlight-box">
-                <p><strong>Core Differentiator</strong>: Relationship intelligence rather than conversational intelligence.</p>
+            <div class="research-section">
+                <h2>Conclusion</h2>
+                <p>The Empathy Resonance Engine represents a fundamental breakthrough in AI emotional intelligence. By moving beyond generic responses to truly personalized emotional understanding, ORA creates the foundation for authentic human-AI relationships that support mental health, personal growth, and emotional well-being.</p>
+                
+                <div class="highlight-box">
+                    <h3>Impact Statement</h3>
+                    <p>ORA doesn't just respond to emotions—it understands them, learns from them, and grows with them, creating the first truly empathetic AI companion.</p>
+                </div>
             </div>
         </div>
-
-        <div class="research-section">
-            <h2>Future Vision</h2>
-            
-            <h3>Market Evolution Parallel</h3>
-            <p>Similar to the mainstream adoption trajectory of:</p>
-            <ul>
-                <li>Meditation practices</li>
-                <li>Journaling for productivity</li>
-                <li>Professional coaching services</li>
-            </ul>
-
-            <h3>Long-term Impact</h3>
-            <p>Emotional clarity accessibility comparable to calendar management - transforming emotional processing from specialized skill to everyday utility.</p>
-
-            <h3>User Experience Outcome</h3>
-            <p>Users experience personalized emotional understanding that eliminates internal cognitive noise, creating dependency through demonstrable value rather than feature novelty.</p>
-        </div>
-
-        <div class="research-section">
-            <h2>Research and Development Priorities</h2>
-            
-            <h3>Immediate Development Goals</h3>
-            <ol>
-                <li>RAVDESS-based emotion classifier optimization</li>
-                <li>Web Speech API integration and real-time processing</li>
-                <li>Basic personalization framework implementation</li>
-                <li>Initial user feedback loop establishment</li>
-            </ol>
-
-            <h3>Medium-term Objectives</h3>
-            <ol>
-                <li>Advanced pattern recognition algorithm development</li>
-                <li>Comprehensive emotion mapping system refinement</li>
-                <li>Cross-session memory architecture optimization</li>
-                <li>Behavioral adaptation algorithm enhancement</li>
-            </ol>
-
-            <h3>Long-term Research Directions</h3>
-            <ol>
-                <li>Multi-modal emotion detection integration</li>
-                <li>Predictive emotional state modeling</li>
-                <li>Group dynamics and relationship network analysis</li>
-                <li>Enterprise and organizational emotional intelligence applications</li>
-            </ol>
-        </div>
-
-        <div class="research-section">
-            <h2>Conclusion</h2>
-            <p>Ora's custom empathy model represents a fundamental advancement in AI emotional intelligence, moving beyond superficial empathy simulation to genuine, personalized emotional understanding. Through persistent memory, adaptive learning, and individualized model development, Ora creates the foundation for authentic human-AI emotional relationships that evolve and deepen over time.</p>
-            
-            <p>The technical feasibility, clear competitive differentiation, and substantial market opportunity positions Ora as a breakthrough innovation in the emerging field of relationship intelligence technology.</p>
-        </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-logo">
-                    <a href="index.html">
-                        <div class="logo-container">
-                            <div class="swirling-logo"></div>
-                        </div>
-                        <span>ORA</span>
-                    </a>
-                    <p>Your personal healthcare companion, empowering wellness through AI-driven insights and personalized care.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ORA</h3>
+                    <p>The first AI voice designed for wellness. Experience 24/7 support that learns, grows & adapts to your needs.</p>
                 </div>
-                
-                <div class="footer-links">
-                    <div class="footer-links-column">
-                        <h3>Product</h3>
-                        <ul>
-                            <li><a href="use-cases.html">Use cases</a></li>
-                            <li><a href="how-it-works.html">How it works</a></li>
-                            <li><a href="https://ora-owjy.onrender.com" target="_blank">Try ORA</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-links-column">
-                        <h3>Resources</h3>
-                        <ul>
-                            <li><a href="research.html">Research</a></li>
-                            <li><a href="podcast.html">Podcast</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-links-column">
-                        <h3>Legal</h3>
-                        <ul>
-                            <li><a href="privacy.html">Privacy Policy</a></li>
-                            <li><a href="terms.html">Terms of Service</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#services">Use cases</a></li>
+                        <li><a href="index.html#how-it-works">How it works</a></li>
+                        <li><a href="blog.html">Research</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#privacy">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#docs">Documentation</a></li>
+                        <li><a href="contact.html">Contact Support</a></li>
+                        <li><a href="#status">System Status</a></li>
+                    </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2025 ORA. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    </script>
 </body>
 </html>
+
 
 

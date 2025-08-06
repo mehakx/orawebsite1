@@ -3,154 +3,593 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORA - The personal, life-like companion that truly understands you</title>
-    <link rel="stylesheet" href="improved_styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>ORA - The first AI voice designed for wellness</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Primary Color Palette */
+            --dark-brown: #1a0600;
+            --medium-brown: #702300;
+            --bright-orange: #ff9f29;
+            
+            /* Neutral Colors */
+            --white: #ffffff;
+            --light-gray: #f9fafb;
+            --medium-gray: #6b7280;
+            --dark-gray: #374151;
+            
+            /* Text Colors */
+            --heading-color: #702300;
+            --body-color: #6b7280;
+            --accent-text: #ff9f29;
+            --hero-text: #ffffff;
+            --footer-headings: #ff9f29;
+            
+            /* Typography */
+            --hero-title: 72px;
+            --hero-subtitle: 24px;
+            --hero-badge: 14px;
+            --section-heading: 48px;
+            --card-heading: 20px;
+            --body-large: 18px;
+            --body-regular: 16px;
+            --body-small: 14px;
+            --stat-number: 72px;
+            --stat-label: 20px;
+            
+            /* Spacing */
+            --max-width: 1280px;
+            --container-padding: 24px;
+            --section-padding: 80px 0;
+            --component-gap: 32px;
+            --text-spacing: 16px;
+            --tight-spacing: 8px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--body-color);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 1);
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-gray);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--medium-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--bright-orange);
+        }
+
+        .cta-button {
+            background-color: var(--medium-brown);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .cta-button:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to bottom, var(--dark-brown), var(--medium-brown), var(--bright-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--hero-text);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-size: var(--hero-badge);
+            margin-bottom: 32px;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: var(--hero-title);
+            font-weight: 300;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: var(--hero-subtitle);
+            margin-bottom: 48px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 16px 32px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 16px 32px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: var(--section-padding);
+        }
+
+        .section-white {
+            background: var(--white);
+        }
+
+        .section-gray {
+            background: var(--light-gray);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-title {
+            font-size: var(--section-heading);
+            font-weight: 600;
+            color: var(--heading-color);
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: var(--body-large);
+            color: var(--body-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--component-gap);
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 32px;
+        }
+
+        .stat-number {
+            font-size: var(--stat-number);
+            font-weight: 300;
+            color: var(--bright-orange);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: var(--stat-label);
+            font-weight: 300;
+            color: var(--heading-color);
+        }
+
+        /* How It Works */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--component-gap);
+        }
+
+        .step {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .step-circle {
+            width: 64px;
+            height: 64px;
+            background-color: var(--medium-brown);
+            color: white;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .step-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin-bottom: 16px;
+        }
+
+        .step-description {
+            color: var(--body-color);
+            line-height: 1.6;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--component-gap);
+        }
+
+        .service-card {
+            background: white;
+            border: 2px solid var(--bright-orange);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-title {
+            color: var(--heading-color);
+            font-size: var(--card-heading);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .service-description {
+            color: var(--body-color);
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--component-gap);
+        }
+
+        .testimonial-card {
+            background: white;
+            border: 2px solid var(--bright-orange);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-user {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bright-orange);
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .user-info h4 {
+            color: var(--heading-color);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .user-role {
+            color: #9ca3af;
+            font-size: var(--body-small);
+        }
+
+        .testimonial-text {
+            color: var(--body-color);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-gray);
+            color: white;
+            padding: 64px 0 32px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h3 {
+            color: var(--footer-headings);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--bright-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid #4b5563;
+            color: #9ca3af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            :root {
+                --hero-title: 48px;
+                --hero-subtitle: 18px;
+                --section-heading: 36px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <div class="logo-container">
-                        <div class="swirling-logo"></div>
-                    </div>
-                    <span>ORA</span>
-                </a>
-            </div>
-            <div class="nav-links" id="navLinks">
-                <ul>
-                    <li><a href="use-cases.html">Use cases</a></li>
-                    <li><a href="how-it-works.html">How it works</a></li>
-                    <li><a href="research.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="nav-actions">
-                <a href="https://ora-owjy.onrender.com" class="btn-primary" target="_blank">Try ORA</a>
-            </div>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
+            <div class="nav-content">
+                <a href="#" class="brand">ORA</a>
+                <div class="nav-links">
+                    <a href="#services" class="nav-link">Use cases</a>
+                    <a href="#how-it-works" class="nav-link">How it works</a>
+                    <a href="blog.html" class="nav-link">Research</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="https://ora-owjy.onrender.com" class="cta-button" target="_blank">Try ORA</a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-main">
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Leave it to <span class="gradient-text">ORA</span></h1>
-                <p class="hero-subtitle">ORA is a life-like, natural voice that speaks and understands you like a friend would. .</p>
-                
-                <div class="hero-actions">
+                <div class="hero-badge">LEAVE IT TO ORA</div>
+                <h1 class="hero-title">The first AI voice designed for wellness</h1>
+                <p class="hero-subtitle">ORA is a life-like, natural voice that speaks and understands you like a friend would.</p>
+                <div class="hero-buttons">
                     <a href="https://ora-owjy.onrender.com" class="btn-primary" target="_blank">Try ORA</a>
-                    <a href="how-it-works.html" class="btn-secondary">Learn more</a>
+                    <a href="#how-it-works" class="btn-secondary">Learn more</a>
                 </div>
             </div>
+        </div>
+    </section>
 
-
-    <!-- Use Cases Section -->
-    <section class="use-cases-preview">
+    <!-- Stats Section -->
+    <section class="section section-white">
         <div class="container">
-            <div class="section-header">
-                <p class="section-label">Use cases</p>
-                <h2>Explore use cases from our collection.</h2>
-                <p class="section-description">Learn how ORA handles real-world challenges through personalized conversations.</p>
-            </div>
-
-            <!-- Category Filters -->
-            <div class="category-filters">
-                <button class="filter-btn active">Featured</button>
-                <button class="filter-btn">Mental Health</button>
-                <button class="filter-btn">Physical Wellness</button>
-                <button class="filter-btn">Emotional Support</button>
-                <button class="filter-btn">Lifestyle</button>
-                <button class="filter-btn">Preventive Care</button>
-            </div>
-
-            <!-- Use Cases Grid -->
-            <div class="use-cases-grid">
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Stress Management at Work</h3>
-                    <p>ORA detects elevated stress patterns during work hours and provides real-time interventions including breathing exercises, micro-breaks, and environment adjustments.</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Improved emotional satisfaction</div>
                 </div>
-
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>Emotional Regulation Support</h3>
-                    <p>Through voice analysis and behavioral patterns, ORA identifies emotional fluctuations and offers personalized coping strategies that works for you.</p>
+                <div class="stat-item">
+                    <div class="stat-number">73%</div>
+                    <div class="stat-label">Increase in daily interactions</div>
                 </div>
-
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fas fa-moon"></i>
-                    </div>
-                    <h3>Sleep Optimization</h3>
-                    <p>ORA monitors sleep patterns and environmental factors to provide personalized recommendations for better sleep hygiene and recovery optimization.</p>
+                <div class="stat-item">
+                    <div class="stat-number">92%</div>
+                    <div class="stat-label">Users feel understood</div>
                 </div>
-            </div>
-
-            <div class="section-footer">
-                <a href="use-cases.html" class="link-arrow">View all use cases <i class="fas fa-arrow-right"></i></a>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Always available support</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- How It Works Section -->
-    <section class="how-it-works-preview">
+    <section id="how-it-works" class="section section-gray">
         <div class="container">
             <div class="section-header">
-                <h2>How ORA <span class="gradient-text">works</span></h2>
-                <p class="section-description">ORA continuously monitors and grows with your conversations, updating its model through multiple data streams and providing proactive, personalized care and support.</p>
+                <h2 class="section-title">How ORA works</h2>
+                <p class="section-subtitle">Three simple steps to transform your wellness journey with personalized AI companionship.</p>
             </div>
-
-            <div class="how-it-works-steps">
+            <div class="steps-grid">
                 <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Continuous Monitoring</h3>
-                        <p>ORA passively collects data from your voice, behavior patterns, and connected devices to understand your current wellness state.</p>
-                    </div>
+                    <div class="step-circle">1</div>
+                    <h3 class="step-title">Continuous Monitoring</h3>
+                    <p class="step-description">ORA passively collects data from your voice, behavior patterns, and connected devices to understand your current wellness state.</p>
                 </div>
-
                 <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Intelligent Analysis</h3>
-                        <p>Advanced AI analyzes patterns across mental, emotional, and physical dimensions to make you feel your best at all times.</p>
-                    </div>
+                    <div class="step-circle">2</div>
+                    <h3 class="step-title">Intelligent Analysis</h3>
+                    <p class="step-description">Advanced AI analyzes patterns across mental, emotional, and physical dimensions to make you feel your best at all times.</p>
                 </div>
-
                 <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Proactive Interventions</h3>
-                        <p>ORA delivers personalized micro-nudges, exercises, and support exactly when you need them most—before problems escalate.</p>
-                    </div>
+                    <div class="step-circle">3</div>
+                    <h3 class="step-title">Proactive Interventions</h3>
+                    <p class="step-description">ORA delivers personalized micro-nudges, exercises, and support exactly when you need them most—before problems escalate.</p>
                 </div>
-            </div>
-
-            <div class="section-footer">
-                <a href="how-it-works.html" class="link-arrow">Learn more about how it works <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Services Section -->
+    <section id="services" class="section section-white">
         <div class="container">
-            <div class="cta-content">
-                <h2>Ready to transform your wellness journey?</h2>
-                <p>Experience the future of proactive companionship with your personal AI companion.</p>
-                <div class="cta-actions">
-                    <a href="https://ora-owjy.onrender.com" class="btn-primary" target="_blank">Try ORA Now</a>
-                    <a href="contact.html" class="btn-secondary">Get in touch</a>
+            <div class="section-header">
+                <h2 class="section-title">Explore use cases from our collection</h2>
+                <p class="section-subtitle">Learn how ORA handles real-world challenges through personalized conversations.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3 class="service-title">Stress Management at Work</h3>
+                    <p class="service-description">ORA detects elevated stress patterns during work hours and provides real-time interventions including breathing exercises, micro-breaks, and environment adjustments.</p>
+                </div>
+                <div class="service-card">
+                    <h3 class="service-title">Emotional Regulation Support</h3>
+                    <p class="service-description">Through voice analysis and behavioral patterns, ORA identifies emotional fluctuations and offers personalized coping strategies that work for you.</p>
+                </div>
+                <div class="service-card">
+                    <h3 class="service-title">Sleep Optimization</h3>
+                    <p class="service-description">ORA monitors sleep patterns and environmental factors to provide personalized recommendations for better sleep hygiene and recovery optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Real results from real people</h2>
+                <p class="section-subtitle">Discover how ORA has transformed wellness journeys for users around the world.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-user">
+                        <div class="user-avatar">S</div>
+                        <div class="user-info">
+                            <h4>Sarah Chen</h4>
+                            <div class="user-role">Marketing Manager</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"ORA has completely changed how I manage stress at work. It's like having a personal wellness coach who truly understands my patterns and knows exactly when I need support."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-user">
+                        <div class="user-avatar">M</div>
+                        <div class="user-info">
+                            <h4>Michael Rodriguez</h4>
+                            <div class="user-role">Software Engineer</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"The emotional intelligence of ORA is remarkable. It doesn't just respond to what I say, but understands how I'm feeling and adapts its approach accordingly. It's genuinely helpful."</p>
                 </div>
             </div>
         </div>
@@ -160,46 +599,45 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-main">
-                    <div class="footer-logo">
-                        <a href="index.html">
-                            <div class="logo-container">
-                                <div class="swirling-logo"></div>
-                            </div>
-                            <span>ORA</span>
-                        </a>
-                        <p>Your personal AI companion, that always understands you with AI-driven insights and proactive care.</p>
-                    </div>
+                <div class="footer-section">
+                    <h3>ORA</h3>
+                    <p>The first AI voice designed for wellness. Experience 24/7 support that learns, grows & adapts to your needs.</p>
                 </div>
-
-                <div class="footer-links">
-                    <div class="footer-links-column">
-                        <h3>Product</h3>
-                        <ul>
-                            <li><a href="use-cases.html">Use cases</a></li>
-                            <li><a href="how-it-works.html">How it works</a></li>
-                            <li><a href="https://ora-owjy.onrender.com" target="_blank">Try ORA</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-links-column">
-                        <h3>Resources</h3>
-                        <ul>
-                            <li><a href="research.html">Research</a></li>
-                    
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-
-    
-
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Use cases</a></li>
+                        <li><a href="#how-it-works">How it works</a></li>
+                        <li><a href="blog.html">Research</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#privacy">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#docs">Documentation</a></li>
+                        <li><a href="contact.html">Contact Support</a></li>
+                        <li><a href="#status">System Status</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 ORA. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
+
+
 

@@ -3,116 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - ORA</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Contact - ORA</title>
     <style>
-        /* Base Styles - ORA Color Scheme */
-        :root {
-            --primary-purple: #9333ea;
-            --primary-cyan: #06b6d4;
-            --primary-pink: #db2777;
-            --primary-amber: #f59e0b;
-            --primary-green: #10b981;
-            --primary-blue: #3b82f6;
-            --black: #000000;
-            --white: #ffffff;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-            --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-800: #1f2937;
-            --gray-900: #111827;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            /* Primary Color Palette */
+            --dark-brown: #1a0600;
+            --medium-brown: #702300;
+            --bright-orange: #ff9f29;
+            
+            /* Neutral Colors */
+            --white: #ffffff;
+            --light-gray: #f9fafb;
+            --medium-gray: #6b7280;
+            --dark-gray: #374151;
+            
+            /* Text Colors */
+            --heading-color: #702300;
+            --body-color: #6b7280;
+            --accent-text: #ff9f29;
+            --hero-text: #ffffff;
+            --footer-headings: #ff9f29;
+            
+            /* Typography */
+            --hero-title: 72px;
+            --hero-subtitle: 24px;
+            --section-heading: 48px;
+            --card-heading: 20px;
+            --body-large: 18px;
+            --body-regular: 16px;
+            --body-small: 14px;
+            
+            /* Spacing */
+            --max-width: 1280px;
+            --container-padding: 24px;
+            --section-padding: 80px 0;
+            --component-gap: 32px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--white);
-            color: var(--gray-900);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
-            font-size: 16px;
+            color: var(--body-color);
         }
 
         .container {
-            width: 100%;
-            max-width: 1200px;
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-cyan), var(--primary-pink), var(--primary-amber));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 300% 100%;
-            animation: gradient-shift 8s ease infinite;
-        }
-
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Swirling Logo */
-        .swirling-logo {
-            position: relative;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-
-        .swirling-logo::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                from 0deg,
-                transparent,
-                rgba(147, 51, 234, 0.8),
-                rgba(6, 182, 212, 0.8),
-                rgba(219, 39, 119, 0.8),
-                rgba(245, 158, 11, 0.8),
-                transparent
-            );
-            animation: rotate 10s linear infinite;
-        }
-
-        .swirling-logo::after {
-            content: '';
-            position: absolute;
-            inset: 4px;
-            background: var(--white);
-            border-radius: 50%;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            padding: 0 var(--container-padding);
         }
 
         /* Navigation */
@@ -120,153 +67,102 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 1);
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--gray-200);
+            padding: 16px 0;
         }
 
-        .navbar .container {
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 72px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
+        .brand {
+            font-size: 24px;
             font-weight: 700;
-            font-size: 20px;
-            color: var(--gray-900);
+            color: var(--dark-gray);
+            text-decoration: none;
         }
 
-        .logo-container {
-            margin-right: 12px;
-        }
-
-        .nav-links ul {
+        .nav-links {
             display: flex;
             gap: 32px;
             align-items: center;
         }
 
-        .nav-links a {
-            color: var(--gray-600);
-            font-weight: 500;
-            transition: color 0.2s ease;
+        .nav-link {
+            color: var(--medium-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--gray-900);
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--bright-orange);
         }
 
-        .nav-links a.active {
-            color: var(--gray-900);
-            font-weight: 600;
+        .cta-button {
+            background-color: var(--medium-brown);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
         }
 
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--gray-600);
-        }
-
-        /* Buttons */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gray-900);
-            color: var(--white);
-            font-weight: 600;
-            padding: 12px 24px;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            background: var(--gray-800);
-            transform: translateY(-1px);
-        }
-
-        .btn-contact {
-            background: linear-gradient(135deg, var(--primary-purple), var(--primary-cyan));
-            color: var(--white);
-            font-weight: 600;
-            padding: 16px 32px;
-            border-radius: 12px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(147, 51, 234, 0.3);
-        }
-
-        .btn-contact:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(147, 51, 234, 0.4);
+        .cta-button:hover {
+            opacity: 0.8;
         }
 
         /* Back Navigation */
         .back-nav {
-            padding: 32px 0;
-            border-bottom: 1px solid var(--gray-200);
-            margin-top: 72px;
+            padding: 100px 0 20px;
+            background: var(--light-gray);
         }
 
-        .back-nav a {
+        .back-link {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-weight: 500;
             display: inline-flex;
             align-items: center;
-            color: var(--gray-600);
-            font-weight: 500;
-            transition: color 0.2s ease;
+            gap: 8px;
+            transition: color 0.3s ease;
         }
 
-        .back-nav a:hover {
-            color: var(--gray-900);
+        .back-link:hover {
+            color: var(--heading-color);
         }
 
-        .back-nav i {
-            margin-right: 8px;
-        }
-
-        /* Page Hero */
-        .page-hero {
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(to bottom, var(--dark-brown), var(--medium-brown), var(--bright-orange));
+            color: var(--hero-text);
             padding: 80px 0;
             text-align: center;
-            background: linear-gradient(135deg, rgba(147, 51, 234, 0.05), rgba(6, 182, 212, 0.05));
         }
 
-        .page-hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            line-height: 1.1;
+        .page-header h1 {
+            font-size: var(--section-heading);
+            font-weight: 600;
+            margin-bottom: 16px;
         }
 
-        .page-hero p {
-            font-size: 1.25rem;
-            color: var(--gray-600);
+        .page-header p {
+            font-size: var(--body-large);
+            opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Contact Form Section */
-        .contact-form {
-            padding: 80px 0;
+        /* Contact Section */
+        .contact-section {
+            padding: var(--section-padding);
+            background: var(--white);
         }
 
         .contact-grid {
@@ -277,16 +173,16 @@
         }
 
         .contact-info h2 {
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: var(--section-heading);
+            font-weight: 600;
+            color: var(--heading-color);
             margin-bottom: 24px;
-            color: var(--gray-900);
         }
 
         .contact-info p {
-            color: var(--gray-600);
-            margin-bottom: 40px;
-            font-size: 1.1rem;
+            color: var(--body-color);
+            margin-bottom: 48px;
+            font-size: var(--body-large);
             line-height: 1.7;
         }
 
@@ -297,59 +193,46 @@
         }
 
         .contact-method {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-            background: var(--gray-50);
-            border-radius: 12px;
-            transition: all 0.2s ease;
+            background: white;
+            border: 2px solid var(--bright-orange);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
         }
 
         .contact-method:hover {
-            background: var(--gray-100);
-            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        .contact-method-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary-purple), var(--primary-cyan));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 20px;
-            margin-right: 16px;
-        }
-
-        .contact-method-details h3 {
-            font-size: 1.1rem;
+        .contact-method h3 {
+            color: var(--heading-color);
+            font-size: var(--card-heading);
             font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: 4px;
+            margin-bottom: 8px;
         }
 
-        .contact-method-details p {
-            color: var(--gray-600);
+        .contact-method p {
+            color: var(--body-color);
             margin: 0;
-            font-size: 1rem;
+            font-size: var(--body-regular);
         }
 
         /* Form */
         .form-container {
-            background: var(--white);
+            background: white;
+            border: 2px solid var(--bright-orange);
             border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--gray-200);
+            padding: 48px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
         .form-container h3 {
-            font-size: 1.5rem;
+            font-size: var(--section-heading);
             font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: 24px;
+            color: var(--heading-color);
+            margin-bottom: 32px;
+            text-align: center;
         }
 
         .form-group {
@@ -359,27 +242,28 @@
         .form-group label {
             display: block;
             font-weight: 600;
-            color: var(--gray-700);
+            color: var(--heading-color);
             margin-bottom: 8px;
-            font-size: 0.95rem;
+            font-size: var(--body-regular);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 16px;
-            border: 2px solid var(--gray-200);
+            border: 2px solid #e5e7eb;
             border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.2s ease;
+            font-size: var(--body-regular);
+            transition: all 0.3s ease;
             font-family: inherit;
+            color: var(--body-color);
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary-purple);
-            box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+            border-color: var(--bright-orange);
+            box-shadow: 0 0 0 3px rgba(255, 159, 41, 0.1);
         }
 
         .form-group textarea {
@@ -387,140 +271,90 @@
             min-height: 120px;
         }
 
+        .btn-submit {
+            background: var(--medium-brown);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: var(--body-regular);
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.8;
+        }
+
         /* Footer */
         .footer {
-            background: var(--gray-900);
-            color: var(--white);
-            padding: 80px 0 40px;
-            margin-top: 80px;
+            background: var(--dark-gray);
+            color: white;
+            padding: 64px 0 32px;
         }
 
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .footer-main {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 80px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 32px;
         }
 
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .footer-logo a {
-            display: flex;
-            align-items: center;
-            font-weight: 700;
-            font-size: 20px;
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-
-        .footer-logo p {
-            color: var(--gray-400);
-            line-height: 1.6;
+        .footer-section h3 {
+            color: var(--footer-headings);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
         }
 
         .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .footer-links-column h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--white);
-        }
-
-        .footer-links-column ul {
             list-style: none;
         }
 
-        .footer-links-column li {
+        .footer-links li {
             margin-bottom: 12px;
         }
 
-        .footer-links-column a {
-            color: var(--gray-400);
-            transition: color 0.2s ease;
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        .footer-links-column a:hover {
-            color: var(--white);
+        .footer-links a:hover {
+            color: var(--bright-orange);
         }
 
         .footer-bottom {
-            padding-top: 40px;
-            border-top: 1px solid var(--gray-800);
             text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid #4b5563;
+            color: #9ca3af;
         }
 
-        .footer-bottom p {
-            color: var(--gray-400);
-        }
-        
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .navbar .container {
-                height: 64px;
-            }
-            
             .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: all 0.3s ease;
-                border-bottom: 1px solid var(--gray-200);
+                display: none;
             }
-            
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
+
+            .page-header h1 {
+                font-size: 36px;
             }
-            
-            .nav-links ul {
-                flex-direction: column;
-                gap: 16px;
-                padding: 20px 24px;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
-            .page-hero h1 {
-                font-size: 2.5rem;
-            }
-            
+
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 50px;
             }
-            
+
             .form-container {
-                padding: 30px 20px;
+                padding: 32px 24px;
             }
-            
-            .footer-main {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .footer-links {
-                grid-template-columns: 1fr;
-                gap: 30px;
+
+            .contact-info h2 {
+                font-size: 36px;
             }
         }
     </style>
@@ -529,28 +363,15 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <div class="logo-container">
-                        <div class="swirling-logo"></div>
-                    </div>
-                    <span>ORA</span>
-                </a>
-            </div>
-            <div class="nav-links" id="navLinks">
-                <ul>
-                    <li><a href="use-cases.html">Use cases</a></li>
-                    <li><a href="how-it-works.html">How it works</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="podcast.html">Podcast</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
-                </ul>
-            </div>
-            <div class="nav-actions">
-                <a href="https://ora-owjy.onrender.com" class="btn-primary" target="_blank">Try ORA</a>
-            </div>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
+            <div class="nav-content">
+                <a href="index.html" class="brand">ORA</a>
+                <div class="nav-links">
+                    <a href="index.html#services" class="nav-link">Use cases</a>
+                    <a href="index.html#how-it-works" class="nav-link">How it works</a>
+                    <a href="blog.html" class="nav-link">Research</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                    <a href="https://ora-owjy.onrender.com" class="cta-button" target="_blank">Try ORA</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -558,58 +379,42 @@
     <!-- Back Navigation -->
     <section class="back-nav">
         <div class="container">
-            <a href="index.html">
-                <i class="fas fa-arrow-left"></i>
-                Back to home
+            <a href="index.html" class="back-link">
+                ← Back to home
             </a>
         </div>
     </section>
 
-    <!-- Page Hero -->
-    <section class="page-hero">
+    <!-- Page Header -->
+    <section class="page-header">
         <div class="container">
-            <h1 class="gradient-text">Get in Touch</h1>
-            <p>Have questions or feedback? We'd love to hear from you.</p>
+            <h1>Get in Touch</h1>
+            <p>Have questions or feedback? We'd love to hear from you and help you on your wellness journey.</p>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section class="contact-form">
+    <!-- Contact Section -->
+    <section class="contact-section">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info">
                     <h2>Information</h2>
-                    <p>Reach out to us with any questions about Ora, partnership opportunities, or support needs.</p>
+                    <p>Reach out to us with any questions about ORA, partnership opportunities, or support needs. Our team is here to help you make the most of your wellness journey.</p>
                     
                     <div class="contact-methods">
                         <div class="contact-method">
-                            <div class="contact-method-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-method-details">
-                                <h3>Email Us</h3>
-                                <p>hello@ora.ai</p>
-                            </div>
+                            <h3>Email Us</h3>
+                            <p>hello@ora.ai</p>
                         </div>
                         
                         <div class="contact-method">
-                            <div class="contact-method-icon">
-                                <i class="fas fa-headset"></i>
-                            </div>
-                            <div class="contact-method-details">
-                                <h3>Support</h3>
-                                <p>support@ora.ai</p>
-                            </div>
+                            <h3>Support</h3>
+                            <p>support@ora.ai</p>
                         </div>
                         
                         <div class="contact-method">
-                            <div class="contact-method-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-method-details">
-                                <h3>Response Time</h3>
-                                <p>Within 24 hours</p>
-                            </div>
+                            <h3>Response Time</h3>
+                            <p>Within 24 hours</p>
                         </div>
                     </div>
                 </div>
@@ -637,7 +442,7 @@
                             <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn-contact">
+                        <button type="submit" class="btn-submit">
                             Send Message
                         </button>
                     </form>
@@ -648,47 +453,40 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-logo">
-                    <a href="index.html">
-                        <div class="logo-container">
-                            <div class="swirling-logo"></div>
-                        </div>
-                        <span>ORA</span>
-                    </a>
-                    <p>Your personal healthcare companion, empowering wellness through AI-driven insights and personalized care.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ORA</h3>
+                    <p>The first AI voice designed for wellness. Experience 24/7 support that learns, grows & adapts to your needs.</p>
                 </div>
-                
-                <div class="footer-links">
-                    <div class="footer-links-column">
-                        <h3>Product</h3>
-                        <ul>
-                            <li><a href="use-cases.html">Use cases</a></li>
-                            <li><a href="how-it-works.html">How it works</a></li>
-                            <li><a href="https://ora-owjy.onrender.com" target="_blank">Try ORA</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-links-column">
-                        <h3>Resources</h3>
-                        <ul>
-                            <li><a href="research.html">Research</a></li>
-                            <li><a href="podcast.html">Podcast</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-links-column">
-                        <h3>Legal</h3>
-                        <ul>
-                            <li><a href="privacy.html">Privacy Policy</a></li>
-                            <li><a href="terms.html">Terms of Service</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#services">Use cases</a></li>
+                        <li><a href="index.html#how-it-works">How it works</a></li>
+                        <li><a href="blog.html">Research</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#privacy">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#docs">Documentation</a></li>
+                        <li><a href="contact.html">Contact Support</a></li>
+                        <li><a href="#status">System Status</a></li>
+                    </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2025 ORA. All rights reserved.</p>
             </div>
@@ -696,14 +494,6 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
         // Form submission
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -730,5 +520,6 @@
     </script>
 </body>
 </html>
+
 
 
